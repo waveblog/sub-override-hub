@@ -1,5 +1,4 @@
 allow-lan: true
-# 不使用统一延迟检测，有些节点前戏太慢了
 unified-delay: true
 tcp-concurrent: true
 find-process-mode: strict
@@ -47,9 +46,8 @@ dns:
     # 前两个是我这边电信的运营商dns，可以换成你自己的，也可以全部使用大厂的公共dns
     # 由于只用来解析nameserver，不使用doh或dot
     default-nameserver:
-        - 117.50.11.11
-        - 180.168.255.18
         - 223.5.5.5
+        - 114.114.114.114
     # 在这个配置中，只用来解析没匹配到nameserver-policy的规则，几乎都是访问外网，因此使用google和cf的doh
     nameserver:
         - https://dns.google/dns-query
@@ -61,9 +59,8 @@ dns:
     # 国内访问的规则使用国内的dns，不考虑dns泄露，不使用doh或dot
     nameserver-policy:
         "geosite:cn,apple-cn,category-games@cn,private":
-            - 117.50.11.11
-            - 180.168.255.18
             - 223.5.5.5
+            - 114.114.114.114
     fake-ip-range: 28.0.0.1/8
     fake-ip-filter:
         - '*'
@@ -98,7 +95,15 @@ proxy-groups:
   - name: 自动选择
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
     type: url-test
-    include-all: true
+    proxies:
+      - 自动选择
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      - 手动切换
     interval: 300
     tolerance: 50
   - name: 电报消息
@@ -321,42 +326,42 @@ proxy-groups:
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
     include-all: true
     filter: (?i)港|HK|hk|Hong Kong|HongKong|hongkong
-    type: url-test
+    type: load-balance
     interval: 300
     tolerance: 50
   - name: 日本节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
     include-all: true
     filter: (?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan
-    type: url-test
+    type: load-balance
     interval: 300
     tolerance: 50
   - name: 美国节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
     include-all: true
     filter: (?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States
-    type: url-test
+    type: load-balance
     interval: 300
     tolerance: 50
   - name: 台湾节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
     include-all: true
     filter: (?i)台|新北|彰化|TW|Taiwan
-    type: url-test
+    type: load-balance
     interval: 300
     tolerance: 50
   - name: 狮城节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
     include-all: true
     filter: (?i)新加坡|坡|狮城|SG|Singapore
-    type: url-test
+    type: load-balance
     interval: 300
     tolerance: 50
   - name: 韩国节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png
     include-all: true
     filter: (?i)KR|Korea|KOR|首尔|韩|韓
-    type: url-test
+    type: load-balance
     interval: 300
     tolerance: 50
   - name: 奈飞节点
