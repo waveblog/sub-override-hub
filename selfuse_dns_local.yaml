@@ -130,22 +130,6 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - DIRECT
-  - name: 奈飞视频
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 故障转移
-      - 奈飞节点
-      - 狮城节点
-      - 香港节点
-      - 台湾节点
-      - 日本节点
-      - 美国节点
-      - 韩国节点
-      - 手动切换
-      - DIRECT
   - name: 巴哈姆特
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png
     type: select
@@ -347,7 +331,6 @@ proxy-groups:
       - 电报消息
       - OpenAi
       - 油管视频
-      - 奈飞视频
       - 巴哈姆特
       - 哔哩哔哩
       - 国外媒体
@@ -369,7 +352,6 @@ proxy-groups:
       - 台湾节点
       - 狮城节点
       - 韩国节点
-      - 奈飞节点
 
 rule-providers:
   LocalAreaNetwork:
