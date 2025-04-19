@@ -1,3 +1,13 @@
+## 使用说明
+
+- 个人修改配置，只在 Sub-Store 中测试覆写成功
+
+- 一般用户请使用 [selfuse_dns.yaml](https://raw.githubusercontent.com/Seameee/override-hub/refs/heads/main/selfuse_dns.yaml) 配置， [selfuse_dns_local.yaml](https://raw.githubusercontent.com/Seameee/override-hub/refs/heads/main/selfuse_dns_local.yaml) 为本地 DNS 分流用户配置文件，需自行修改 DNS 地址
+
+以下为原 README 内容
+
+---------------------------
+
 ## Mihomo Party 常用覆写脚本/示例
 
 ### 使用方法
