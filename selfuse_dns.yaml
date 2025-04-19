@@ -326,7 +326,7 @@ proxy-groups:
     interval: 300
     tolerance: 50
   - name: 台湾节点
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/China.png
     include-all: true
     filter: (?i)台|新北|彰化|TW|Taiwan
     type: load-balance
