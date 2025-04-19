@@ -58,6 +58,7 @@ proxy-groups:
     proxies:
       - 故障转移首选
       - 故障转移次选
+      - 省流节点
       - 高级节点
       - 自动选择
   - name: 自动选择
@@ -79,6 +80,7 @@ proxy-groups:
     proxies:
       - 节点选择
       - 自动选择
+      - 省流节点
       - 故障转移
       - 狮城节点
       - 香港节点
@@ -94,6 +96,7 @@ proxy-groups:
     proxies:
       - 节点选择
       - 自动选择
+      - 省流节点
       - 故障转移
       - 狮城节点
       - 香港节点
@@ -109,6 +112,7 @@ proxy-groups:
     proxies:
       - 节点选择
       - 自动选择
+      - 省流节点
       - 故障转移
       - 狮城节点
       - 香港节点
@@ -139,6 +143,7 @@ proxy-groups:
     proxies:
       - 节点选择
       - 自动选择
+      - 省流节点
       - 故障转移
       - 香港节点
       - 台湾节点
@@ -186,6 +191,7 @@ proxy-groups:
     proxies:
       - DIRECT
       - 节点选择
+      - 省流节点
       - 美国节点
       - 香港节点
       - 台湾节点
@@ -313,11 +319,18 @@ proxy-groups:
     type: load-balance
     interval: 300
     tolerance: 50
+  - name: 省流节点
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/IEPL.png
+    include-all: true
+    filter: (0\.[0-9]|低倍率|省流|大流量)
+    type: load-balance
+    interval: 300
+    tolerance: 50
   - name: 高级节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/IEPL.png
     include-all: true
     filter: (专线|专用|高级|直连|急速|高倍率|IEPL|IPLC|AIA|CTM|CC|iepl|iplc|aia|ctm|cc|AC)
-    type: url-test
+    type: load-balance
     interval: 300
     tolerance: 50
 
