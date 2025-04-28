@@ -62,6 +62,7 @@ proxy-groups:
       - 高级节点
       - 自动选择
     interval: 300
+    url: 'https://maps.google.com/generate_204'
   - name: 自动选择
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
     type: url-test
@@ -256,19 +257,19 @@ proxy-groups:
     type: select
     proxies:
       - DIRECT
-      - 节点选择
+    hidden: true
   - name: 广告拦截
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
     type: select
     proxies:
       - REJECT
-      - DIRECT
+    hidden: true
   - name: 应用净化
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png
     type: select
     proxies:
       - REJECT
-      - DIRECT
+    hidden: true
   - name: 漏网之鱼
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
     type: select
@@ -284,42 +285,42 @@ proxy-groups:
     filter: (?i)港|HK|hk|Hong Kong|HongKong|hongkong
     type: load-balance
     interval: 300
-    tolerance: 50
+    hidden: true
   - name: 日本节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
     include-all: true
     filter: (?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan
     type: load-balance
     interval: 300
-    tolerance: 50
+    hidden: true
   - name: 美国节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
     include-all: true
     filter: (?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States
     type: load-balance
     interval: 300
-    tolerance: 50
+    hidden: true
   - name: 台湾节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/China.png
     include-all: true
     filter: (?i)台|新北|彰化|TW|Taiwan
     type: load-balance
     interval: 300
-    tolerance: 50
+    hidden: true
   - name: 狮城节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
     include-all: true
     filter: (?i)新加坡|坡|狮城|SG|Singapore
     type: load-balance
     interval: 300
-    tolerance: 50
+    hidden: true
   - name: 韩国节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png
     include-all: true
     filter: (?i)KR|Korea|KOR|首尔|韩|韓
     type: load-balance
     interval: 300
-    tolerance: 50
+    hidden: true
   - name: 省流节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Available_1.png
     include-all: true
@@ -327,6 +328,7 @@ proxy-groups:
     type: load-balance
     interval: 300
     lazy: true
+    hidden: true
   - name: 高级节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/IEPL.png
     include-all: true
@@ -334,6 +336,7 @@ proxy-groups:
     type: load-balance
     interval: 300
     lazy: true
+    hidden: true
 
 rule-providers:
   LocalAreaNetwork:
