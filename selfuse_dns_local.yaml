@@ -21,23 +21,13 @@ sniffer:
         - dlg.io.mi.com
         - "+.push.apple.com"
 dns:
-    enable: true
-    ipv6: false
-    enhanced-mode: fake-ip
-    use-hosts: true
-    use-system-hosts: true
-    nameserver:
-        - 192.168.5.252
-    fake-ip-range: 28.0.0.1/8
-    fake-ip-filter:
-        - '*'
-        - '+.lan'
-        - '+.local'
-        - +.stun.*.*
-        - +.stun.*.*.*
-        - +.stun.*.*.*.*
-        - +.stun.*.*.*.*.*
-        - localhost.ptlogin2.qq.com
+  enable: true
+  listen: 0.0.0.0:53
+  ipv6: false
+  use-hosts: true
+  enhanced-mode: redir-host
+  nameserver:
+    - 192.168.5.252
 geodata-mode: true
 geox-url:
     geoip: "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat"
@@ -50,6 +40,7 @@ proxy-groups:
       - 自动选择
       - 故障转移
       - 手动切换
+      - 落地节点
       - DIRECT
   - name: 故障转移
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bypass.png
@@ -63,6 +54,23 @@ proxy-groups:
       - 自动选择
     interval: 300
     url: 'https://maps.google.com/generate_204'
+  - name: 手动切换
+    icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
+    include-all: true
+    type: select
+  - name: 故障转移首选
+    icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
+    include-all: true
+    type: select
+  - name: 故障转移次选
+    icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
+    include-all: true
+    type: select
+  - name: 落地节点
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Lab.png
+    include-all: true
+    filter: (落地|家宽)
+    type: select
   - name: 自动选择
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
     type: url-test
@@ -106,6 +114,7 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 韩国节点
+      - 落地节点
       - 手动切换
       - DIRECT
   - name: 油管视频
@@ -122,6 +131,7 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 韩国节点
+      - 落地节点
       - 手动切换
       - DIRECT
   - name: 巴哈姆特
@@ -129,6 +139,7 @@ proxy-groups:
     type: select
     proxies:
       - 台湾节点
+      - 落地节点
       - 节点选择
       - 手动切换
       - DIRECT
@@ -139,6 +150,7 @@ proxy-groups:
       - 全球直连
       - 台湾节点
       - 香港节点
+      - 落地节点
   - name: 国外媒体
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
     type: select
@@ -153,6 +165,7 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 韩国节点
+      - 落地节点
       - 手动切换
       - DIRECT
   - name: 国内媒体
@@ -240,18 +253,6 @@ proxy-groups:
       - 日本节点
       - 韩国节点
       - 手动切换
-  - name: 手动切换
-    icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
-    include-all: true
-    type: select
-  - name: 故障转移首选
-    icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
-    include-all: true
-    type: select
-  - name: 故障转移次选
-    icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
-    include-all: true
-    type: select
   - name: 全球直连
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png
     type: select
@@ -282,49 +283,49 @@ proxy-groups:
   - name: 香港节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
     include-all: true
-    filter: (?i)港|HK|hk|Hong Kong|HongKong|hongkong
+    filter: ^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)(\d+)?\b)))(?!.*((?i)0\.[0-9]|低倍率|省流|大流量|落地|家宽|回国|校园|游戏|🎮|(\b(GAME)(\d+)?\b))).*$
     type: load-balance
     interval: 300
     hidden: true
   - name: 日本节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
     include-all: true
-    filter: (?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan
+    filter: ^(?=.*((?i)🇯🇵|日本|川日|东京|大阪|泉日|埼玉|(\b(JP|Japan)(\d+)?\b)))(?!.*((?i)0\.[0-9]|低倍率|省流|大流量|落地|家宽|回国|校园|游戏|🎮|(\b(GAME)(\d+)?\b))).*$
     type: load-balance
     interval: 300
     hidden: true
   - name: 美国节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
     include-all: true
-    filter: (?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States
+    filter: ^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)(\d+)?\b)))(?!.*((?i)0\.[0-9]|低倍率|省流|大流量|落地|家宽|回国|校园|游戏|🎮|(\b(GAME)(\d+)?\b))).*$
     type: load-balance
     interval: 300
     hidden: true
   - name: 台湾节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/China.png
     include-all: true
-    filter: (?i)台|新北|彰化|TW|Taiwan
+    filter: ^(?=.*((?i)🇹🇼|台湾|(\b(TW|Tai|Taiwan)(\d+)?\b)))(?!.*((?i)0\.[0-9]|低倍率|省流|大流量|落地|家宽|回国|校园|游戏|🎮|(\b(GAME)(\d+)?\b))).*$
     type: load-balance
     interval: 300
     hidden: true
   - name: 狮城节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
     include-all: true
-    filter: (?i)新加坡|坡|狮城|SG|Singapore
+    filter: ^(?=.*((?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)(\d+)?\b)))(?!.*((?i)0\.[0-9]|低倍率|省流|大流量|落地|家宽|回国|校园|游戏|🎮|(\b(GAME)(\d+)?\b))).*$
     type: load-balance
     interval: 300
     hidden: true
   - name: 韩国节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png
     include-all: true
-    filter: (?i)KR|Korea|KOR|首尔|韩|韓
+    filter: ^(?=.*((?i)🇰🇷|韩国|韓|首尔|(\b(KR|Korea)(\d+)?\b)))(?!.*((?i)0\.[0-9]|低倍率|省流|大流量|落地|家宽|回国|校园|游戏|🎮|(\b(GAME)(\d+)?\b))).*$
     type: load-balance
     interval: 300
     hidden: true
   - name: 省流节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Available_1.png
     include-all: true
-    filter: (0\.[0-9]|低倍率|省流|大流量)
+    filter: ^(?=.*((?i)0\.[0-9]|低倍率|省流|大流量(\d+)?\b))(?!.*((?i)落地|家宽|回国|校园|游戏|🎮|(\b(GAME)(\d+)?\b))).*$
     type: load-balance
     interval: 300
     lazy: true
@@ -332,7 +333,7 @@ proxy-groups:
   - name: 高级节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/IEPL.png
     include-all: true
-    filter: (专线|专用|高级|直连|急速|高倍率|IEPL|IPLC|AIA|CTM|CC|iepl|iplc|aia|ctm|cc|AC)
+    filter: ^(?=.*((?i)专线|专用|高级|直连|急速|高倍率|IEPL|IPLC|AIA|CTM|CC|iepl|iplc|aia|ctm|cc|AC(\d+)?\b))(?!.*((?i)0\.[0-9]|低倍率|省流|大流量|落地|家宽|回国|校园|游戏|🎮|(\b(GAME)(\d+)?\b))).*$
     type: load-balance
     interval: 300
     lazy: true
