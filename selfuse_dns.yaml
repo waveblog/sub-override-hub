@@ -81,14 +81,14 @@ proxy-groups:
   - name: 故障转移
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bypass.png
     type: fallback
-    lazy: true
+    lazy: false
     proxies:
       - 故障转移首选
       - 故障转移次选
       - 省流节点
       - 高级节点
       - 自动选择
-    interval: 300
+    interval: 180
     url: 'https://maps.google.com/generate_204'
   - name: 手动切换
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
