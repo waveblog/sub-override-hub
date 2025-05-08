@@ -74,7 +74,7 @@ proxy-groups:
   - name: 自动选择
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
     type: url-test
-    lazy: true
+    lazy: false
     proxies:
       - 香港节点
       - 台湾节点
@@ -286,6 +286,7 @@ proxy-groups:
     filter: ^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)(\d+)?\b)))(?!.*((?i)0\.[0-9]|低倍率|省流|大流量|落地|家宽|自建|回国|校园|游戏|🎮|(\b(GAME)(\d+)?\b))).*$
     type: load-balance
     interval: 300
+    strategy: consistent-hashing
     hidden: true
   - name: 日本节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
@@ -293,6 +294,7 @@ proxy-groups:
     filter: ^(?=.*((?i)🇯🇵|日本|川日|东京|大阪|泉日|埼玉|(\b(JP|Japan)(\d+)?\b)))(?!.*((?i)0\.[0-9]|低倍率|省流|大流量|落地|家宽|自建|回国|校园|游戏|🎮|(\b(GAME)(\d+)?\b))).*$
     type: load-balance
     interval: 300
+    strategy: consistent-hashing
     hidden: true
   - name: 美国节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
@@ -300,6 +302,7 @@ proxy-groups:
     filter: ^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)(\d+)?\b)))(?!.*((?i)0\.[0-9]|低倍率|省流|大流量|落地|家宽|自建|回国|校园|游戏|🎮|(\b(GAME)(\d+)?\b))).*$
     type: load-balance
     interval: 300
+    strategy: consistent-hashing
     hidden: true
   - name: 台湾节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/China.png
@@ -307,6 +310,7 @@ proxy-groups:
     filter: ^(?=.*((?i)🇹🇼|台湾|(\b(TW|Tai|Taiwan)(\d+)?\b)))(?!.*((?i)0\.[0-9]|低倍率|省流|大流量|落地|家宽|自建|回国|校园|游戏|🎮|(\b(GAME)(\d+)?\b))).*$
     type: load-balance
     interval: 300
+    strategy: consistent-hashing
     hidden: true
   - name: 狮城节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
@@ -314,6 +318,7 @@ proxy-groups:
     filter: ^(?=.*((?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)(\d+)?\b)))(?!.*((?i)0\.[0-9]|低倍率|省流|大流量|落地|家宽|自建|回国|校园|游戏|🎮|(\b(GAME)(\d+)?\b))).*$
     type: load-balance
     interval: 300
+    strategy: consistent-hashing
     hidden: true
   - name: 韩国节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png
@@ -321,6 +326,7 @@ proxy-groups:
     filter: ^(?=.*((?i)🇰🇷|韩国|韓|首尔|(\b(KR|Korea)(\d+)?\b)))(?!.*((?i)0\.[0-9]|低倍率|省流|大流量|落地|家宽|自建|回国|校园|游戏|🎮|(\b(GAME)(\d+)?\b))).*$
     type: load-balance
     interval: 300
+    strategy: consistent-hashing
     hidden: true
   - name: 省流节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Available_1.png
@@ -328,7 +334,7 @@ proxy-groups:
     filter: ^(?=.*((?i)0\.[0-9]|低倍率|省流|大流量(\d+)?\b))(?!.*((?i)落地|家宽|自建|回国|校园|游戏|🎮|(\b(GAME)(\d+)?\b))).*$
     type: load-balance
     interval: 300
-    lazy: true
+    strategy: consistent-hashing
     hidden: true
   - name: 高级节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/IEPL.png
@@ -336,7 +342,7 @@ proxy-groups:
     filter: ^(?=.*((?i)专线|专用|高级|直连|急速|高倍率|IEPL|IPLC|AIA|CTM|CC|iepl|iplc|aia|ctm|cc|AC(\d+)?\b))(?!.*((?i)0\.[0-9]|低倍率|省流|大流量|落地|家宽|自建|回国|校园|游戏|🎮|(\b(GAME)(\d+)?\b))).*$
     type: load-balance
     interval: 300
-    lazy: true
+    strategy: consistent-hashing
     hidden: true
 
 rule-providers:
