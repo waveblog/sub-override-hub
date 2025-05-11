@@ -88,7 +88,7 @@ proxy-groups:
       - 省流节点
       - 高级节点
       - 自动选择
-    interval: 180
+    interval: 300
     url: 'https://maps.google.com/generate_204'
   - name: 手动切换
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
