@@ -56,8 +56,8 @@ proxy-groups:
       - 省流节点
       - 高级节点
       - 自动选择
-    interval: 300
     url: 'http://www.google.com/generate_204'
+    interval: 300
     timeout: 5000
     max-failed-times: 2
   - name: 手动切换
@@ -73,17 +73,11 @@ proxy-groups:
     include-all: true
     type: select
     url: 'http://cp.cloudflare.com/generate_204'
-    interval: 300
-    timeout: 5000
-    max-failed-times: 2
   - name: 故障转移次选
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
     include-all: true
     type: select
     url: 'http://cp.cloudflare.com/generate_204'
-    interval: 300
-    timeout: 5000
-    max-failed-times: 2
   - name: 落地节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Lab.png
     include-all: true
@@ -101,9 +95,11 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 韩国节点
+    url: 'http://www.google.com/generate_204'
     interval: 300
     tolerance: 50
-    url: 'http://www.google.com/generate_204'
+    timeout: 5000
+    max-failed-times: 2
   - name: 电报消息
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Telegram.png
     type: select
