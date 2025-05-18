@@ -372,7 +372,7 @@ proxy-groups:
     filter: ^(?=.*((?i)0\.[0-9]|低倍率|省流|大流量(\d+)?\b))(?!.*((?i)落地|家宽|自建|回国|校园|游戏|🎮|(\b(GAME)(\d+)?\b))).*$
     type: load-balance
     interval: 300
-    strategy: consistent-hashing
+    strategy: round-robin
     hidden: true
     url: 'http://cp.cloudflare.com/generate_204'
   - name: 高级节点
