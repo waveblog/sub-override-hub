@@ -57,15 +57,6 @@ tun:
   # 如果有使用zerotier或者headscale等，需要自己配置排除自己的网段
   # route-exclude-address: ["192.168.110.0/24"]
 
-### 订阅基础配置
-NodeParam: &NodeParam {type: http, interval: 86400, health-check: {enable: true, url: 'http://connectivitycheck.platform.hicloud.com/generate_204', interval: 300}}
-# 订阅合集
-proxy-providers: 
-  Node:
-    url: 'http://192.168.5.251:3001/c3sxzFL3cimEw9Hx/download/collection/personalsub'
-    <<: *NodeParam
-    path: './proxy_provider/providers.yaml'
-
 # 节点筛选
 
 # 按地区筛选
@@ -84,54 +75,38 @@ FilterAdvance: &FilterAdvance '^(?=.*((?i)(\s|-)(([1-9](\.\d+)?)(×|x|X))|专线
 FilterLanding: &FilterLanding '^(?=.*((?i)落地|家宽|自建)).*$'
 FilterAll: &FilterAll '^(?=.*(.))(?!.*((?i)群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|(\b(USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author)\b|(\d{4}-\d{2}-\d{2}|\d+G)))).*$'
 
-Select: &Select {type: select, url: 'http://connectivitycheck.platform.hicloud.com/generate_204', disable-udp: false, hidden: false, include-all: true}
-Auto: &Auto {type: url-test, url: 'http://connectivitycheck.platform.hicloud.com/generate_204', interval: 300, tolerance: 50, disable-udp: false, hidden: false, include-all: true}
-Loadlanlace: &Loadlanlace {type: load-balance, url: 'http://connectivitycheck.platform.hicloud.com/generate_204', interval: 300, strategy: round-robin, disable-udp: false, hidden: false, include-all: true}
+Select: &Select {type: select, url: 'http://cp.cloudflare.com/generate_204', disable-udp: false, hidden: false, include-all: true}
+Auto: &Auto {type: url-test, url: 'http://cp.cloudflare.com/generate_204', interval: 300, tolerance: 50, disable-udp: false, hidden: true, include-all: true}
+Loadlanlace: &Loadlanlace {type: load-balance, url: 'http://cp.cloudflare.com/generate_204', interval: 300, strategy: round-robin, disable-udp: false, hidden: true, include-all: true}
 # 策略组
 proxy-groups: 
   # 主选择组
-  - {name: 节点选择, type: select, proxies: [自动选择, 手动选择, DIRECT], url: http://connectivitycheck.platform.hicloud.com/generate_204, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Static.png}
+  - {name: 节点选择, type: select, proxies: [自动选择, 手动选择, DIRECT], url: http://cp.cloudflare.com/generate_204, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png}
 
   # 手动/自动
-  - {name: 手动选择, type: select, proxies: [🇭🇰 - 手动选择, 🇯🇵 - 手动选择, 🇰🇷 - 手动选择, 🇸🇬 - 手动选择, 🇺🇸 - 手动选择, 🇬🇧 - 手动选择, 🇫🇷 - 手动选择, 🇩🇪 - 手动选择, 🇨🇳 - 手动选择, Others - 手动选择], url: http://connectivitycheck.platform.hicloud.com/generate_204, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Cylink.png}
-  - {name: 自动选择, type: select, proxies: [🇭🇰 - 自动选择, 🇯🇵 - 自动选择, 🇰🇷 - 自动选择, 🇸🇬 - 自动选择, 🇺🇸 - 自动选择, 🇬🇧 - 自动选择, 🇫🇷 - 自动选择, 🇩🇪 - 自动选择, 🇨🇳 - 自动选择], url: http://connectivitycheck.platform.hicloud.com/generate_204, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Urltest.png}
-
-  # 应用分组
-  - {name: 电报信息, type: select, proxies: [节点选择, AllIn - 省流选择, AllIn - 落地选择, 🇭🇰 - 自动选择, 🇯🇵 - 自动选择, 🇸🇬 - 自动选择, 🇺🇸 - 自动选择], icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Telegram.png}
-  - {name: 人工智能, type: select, proxies: [🇺🇸 - 自动选择, 节点选择, AllIn - 省流选择, AllIn - 落地选择, 🇭🇰 - 自动选择, 🇯🇵 - 自动选择, 🇸🇬 - 自动选择], icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png}
-  - {name: 苹果服务, type: select, proxies: [DIRECT, 节点选择, AllIn - 省流选择, AllIn - 落地选择, 🇭🇰 - 自动选择, 🇺🇸 - 自动选择], icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Apple.png}
-  - {name: 微软服务, type: select, proxies: [DIRECT, 节点选择, AllIn - 省流选择, AllIn - 落地选择, 🇭🇰 - 自动选择, 🇺🇸 - 自动选择], icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Microsoft.png}
-  - {name: 国外媒体, type: select, proxies: [节点选择, AllIn - 省流选择, AllIn - 落地选择, 🇭🇰 - 自动选择, 🇺🇸 - 自动选择], icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Streaming.png}
-  # 自动选择 - 按地区
-  - {name: 🇭🇰 - 自动选择, <<: *Auto, filter: *FilterHK}
-  - {name: 🇯🇵 - 自动选择, <<: *Auto, filter: *FilterJP}
-  - {name: 🇰🇷 - 自动选择, <<: *Auto, filter: *FilterKR}
-  - {name: 🇸🇬 - 自动选择, <<: *Auto, filter: *FilterSG}
-  - {name: 🇺🇸 - 自动选择, <<: *Auto, filter: *FilterUS}
-  - {name: 🇬🇧 - 自动选择, <<: *Auto, filter: *FilterUK}
-  - {name: 🇫🇷 - 自动选择, <<: *Auto, filter: *FilterFR}
-  - {name: 🇩🇪 - 自动选择, <<: *Auto, filter: *FilterDE}
-  - {name: 🇨🇳 - 自动选择, <<: *Auto, filter: *FilterTW}
-
-  # 手动选择 - 按地区
-  - {name: 🇭🇰 - 手动选择, <<: *Select, filter: *FilterHK}
-  - {name: 🇯🇵 - 手动选择, <<: *Select, filter: *FilterJP}
-  - {name: 🇰🇷 - 手动选择, <<: *Select, filter: *FilterKR}
-  - {name: 🇸🇬 - 手动选择, <<: *Select, filter: *FilterSG}
-  - {name: 🇺🇸 - 手动选择, <<: *Select, filter: *FilterUS}
-  - {name: 🇬🇧 - 手动选择, <<: *Select, filter: *FilterUK}
-  - {name: 🇫🇷 - 手动选择, <<: *Select, filter: *FilterFR}
-  - {name: 🇩🇪 - 手动选择, <<: *Select, filter: *FilterDE}
-  - {name: 🇨🇳 - 手动选择, <<: *Select, filter: *FilterTW}
-  - {name: Others - 手动选择, <<: *Select, filter: *FilterOthers}
-
-  # 全部节点
-  - {name: AllIn - 手动选择, <<: *Select, filter: *FilterAll}
-  - {name: AllIn - 自动选择, <<: *Auto, filter: *FilterAll}
+  - {name: 手动选择, <<: *Select, filter: *FilterAll, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Static.png}
+  - {name: 自动选择, type: select, proxies: [香港节点, 日本节点, 韩国节点, 狮城节点, 美国节点, 英国节点, 法国节点, 德国节点, 台湾节点], url: http://cp.cloudflare.com/generate_204, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Urltest.png}
 
   # 特殊分组
-  - {name: AllIn - 省流选择, <<: *Loadlanlace, filter: *FilterSave}
-  - {name: AllIn - 落地选择, <<: *Select, filter: *FilterLanding}
+  - {name: 省流选择, <<: *Loadlanlace, filter: *FilterSave, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Roundrobin.png}
+  - {name: 落地选择, <<: *Select, filter: *FilterLanding, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png}
+
+  # 应用分组
+  - {name: 电报信息, type: select, proxies: [节点选择, 省流选择, 落地选择, 香港节点, 日本节点, 狮城节点, 美国节点], icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Telegram.png}
+  - {name: 人工智能, type: select, proxies: [美国节点, 节点选择, 省流选择, 落地选择, 香港节点, 日本节点, 狮城节点], icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png}
+  - {name: 苹果服务, type: select, proxies: [DIRECT, 节点选择, 省流选择, 落地选择, 香港节点, 美国节点], icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Apple.png}
+  - {name: 微软服务, type: select, proxies: [DIRECT, 节点选择, 省流选择, 落地选择, 香港节点, 美国节点], icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Microsoft.png}
+  - {name: 国外媒体, type: select, proxies: [节点选择, 省流选择, 落地选择, 香港节点, 美国节点], icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Streaming.png}
+  # 自动选择 - 按地区
+  - {name: 香港节点, <<: *Auto, filter: *FilterHK, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png}
+  - {name: 日本节点, <<: *Auto, filter: *FilterJP, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png}
+  - {name: 韩国节点, <<: *Auto, filter: *FilterKR, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png}
+  - {name: 狮城节点, <<: *Auto, filter: *FilterSG, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png}
+  - {name: 美国节点, <<: *Auto, filter: *FilterUS, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png}
+  - {name: 英国节点, <<: *Auto, filter: *FilterUK, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/UK.png}
+  - {name: 法国节点, <<: *Auto, filter: *FilterFR, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/FR.png}
+  - {name: 德国节点, <<: *Auto, filter: *FilterDE, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/DE.png}
+  - {name: 台湾节点, <<: *Auto, filter: *FilterTW, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/CN.png}
 
 ### 规则配置
 RuleSet_classical: &RuleSet_classical {type: http, behavior: classical, interval: 43200, format: text, proxy: 节点选择}
@@ -285,8 +260,8 @@ rules:
   - RULE-SET,stream_non_ip,国外媒体
   - RULE-SET,telegram_non_ip,电报信息
   - RULE-SET,apple_cdn,DIRECT
-  - RULE-SET,download_domainset,AllIn - 省流选择
-  - RULE-SET,download_non_ip,AllIn - 省流选择
+  - RULE-SET,download_domainset,省流选择
+  - RULE-SET,download_non_ip,省流选择
   - RULE-SET,microsoft_cdn_non_ip,DIRECT
   - RULE-SET,apple_cn_non_ip,DIRECT
   - RULE-SET,apple_services,苹果服务
