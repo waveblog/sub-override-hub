@@ -1,3 +1,4 @@
+### 参考自https://github.com/yyhhyyyyyy/selfproxy
 ### 全局配置
 mixed-port: 7897
 allow-lan: true
@@ -9,7 +10,7 @@ find-process-mode: strict
 # external-controller: 0.0.0.0:9988
 # external-ui: ui
 # external-ui-url: 'https://mirror.ghproxy.com/https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip'
-# secret: "yyhhyyyyyy"
+# secret: "114514yijiuyijiubayiling"
 profile:
   store-selected: true
   store-fake-ip: true
@@ -112,13 +113,24 @@ proxy-groups:
 RuleSet_classical: &RuleSet_classical {type: http, behavior: classical, interval: 43200, format: text, proxy: 节点选择}
 RuleSet_domain: &RuleSet_domain {type: http, behavior: domain, interval: 43200, format: text, proxy: 节点选择}
 RuleSet_ipcidr: &RuleSet_ipcidr {type: http, behavior: ipcidr, interval: 43200, format: text, proxy: 节点选择}
+RuleSet_filter: &RuleSet_filter {type: http, behavior: domain, interval: 43200, format: mrs, proxy: 节点选择}
 
 # 订阅规则
 rule-providers:
+  fakeip-filter:
+    <<: *RuleSet_filter
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/fakeip-filter.mrs
+    path: ./rules/fakeip-filter.mrs
+
+  cn:
+    <<: *RuleSet_filter
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cn.mrs
+    path: ./rules/cn.mrs
+
   reject_non_ip_no_drop:
     <<: *RuleSet_classical
-    url: 'https://ruleset.skk.moe/Clash/non_ip/reject-no-drop.txt'
-    path: './rule_set/sukkaw_ruleset/reject_non_ip_no_drop.txt'
+    url: https://ruleset.skk.moe/Clash/non_ip/reject-no-drop.txt
+    path: ./rule_set/sukkaw_ruleset/reject_non_ip_no_drop.txt
 
   reject_non_ip_drop:
     <<: *RuleSet_classical
@@ -273,10 +285,10 @@ rules:
   - RULE-SET,lan_non_ip,DIRECT
 
   ### IP 类规则
-  - RULE-SET,reject_ip,REJECT
-  - RULE-SET,telegram_ip,电报信息
-  - RULE-SET,stream_ip,国外媒体
-  - RULE-SET,lan_ip,DIRECT
-  - RULE-SET,domestic_ip,DIRECT
-  - RULE-SET,china_ip,DIRECT
+  - RULE-SET,reject_ip,REJECT,no-resolve
+  - RULE-SET,telegram_ip,电报信息,no-resolve
+  - RULE-SET,stream_ip,国外媒体,no-resolve
+  - RULE-SET,lan_ip,DIRECT,no-resolve
+  - RULE-SET,domestic_ip,DIRECT,no-resolve
+  - RULE-SET,china_ip,DIRECT,no-resolve
   - MATCH,节点选择
