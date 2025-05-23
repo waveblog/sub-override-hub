@@ -127,6 +127,16 @@ rule-providers:
     url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cn.mrs
     path: ./rules/cn.mrs
 
+  private:
+    <<: *RuleSet_filter
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/private.mrs
+    path: ./rules/private.mrs
+
+  trackerslist:
+    <<: *RuleSet_filter
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/trackerslist.mrs
+    path: ./rules/trackerslist.mrs
+
   reject_non_ip_no_drop:
     <<: *RuleSet_classical
     url: https://ruleset.skk.moe/Clash/non_ip/reject-no-drop.txt
