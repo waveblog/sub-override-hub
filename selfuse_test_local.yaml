@@ -121,22 +121,22 @@ RuleSet_filter: &RuleSet_filter {type: http, behavior: domain, interval: 43200, 
 rule-providers:
   fakeip-filter:
     <<: *RuleSet_filter
-    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/fakeip-filter.mrs
+    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/fakeip-filter.mrs
     path: ./rules/fakeip-filter.mrs
 
   cn:
     <<: *RuleSet_filter
-    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cn.mrs
+    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/cn.mrs
     path: ./rules/cn.mrs
 
   private:
     <<: *RuleSet_filter
-    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/private.mrs
+    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/private.mrs
     path: ./rules/private.mrs
 
   trackerslist:
     <<: *RuleSet_filter
-    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/trackerslist.mrs
+    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/trackerslist.mrs
     path: ./rules/trackerslist.mrs
 
   reject_non_ip_no_drop:
