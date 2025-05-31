@@ -79,7 +79,7 @@ FilterTunnel: &FilterTunnel '^(?=.*(香港|HK|Hong|🇭🇰|日本|JP|Japan|🇯
 
 Select: &Select {type: select, url: 'http://cp.cloudflare.com/generate_204', disable-udp: false, hidden: false, include-all: true}
 Auto: &Auto {type: url-test, url: 'http://cp.cloudflare.com/generate_204', interval: 300, tolerance: 50, disable-udp: false, hidden: true, include-all: true}
-Loadlanlace: &Loadlanlace {type: load-balance, url: 'http://cp.cloudflare.com/generate_204', interval: 300, strategy: round-robin, disable-udp: false, hidden: true, include-all: true}
+Loadbalance: &Loadbalance {type: load-balance, url: 'http://cp.cloudflare.com/generate_204', interval: 300, strategy: round-robin, disable-udp: false, hidden: true, include-all: true}
 # 策略组
 proxy-groups: 
   # 主选择组
@@ -90,9 +90,9 @@ proxy-groups:
   - {name: 自动选择, type: select, proxies: [香港节点, 日本节点, 韩国节点, 狮城节点, 美国节点, 英国节点, 法国节点, 德国节点, 台湾节点], url: http://cp.cloudflare.com/generate_204, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Urltest.png}
 
   # 特殊分组
-  - {name: 省流选择, <<: *Loadlanlace, filter: *FilterSave, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Roundrobin.png}
+  - {name: 省流选择, <<: *Loadbalance, filter: *FilterSave, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Roundrobin.png}
   - {name: 落地选择, <<: *Select, filter: *FilterLanding, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png}
-  - {name: 节点轮询, <<: *Loadlanlace, filter: *FilterTunnel, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Roundrobin.png}
+  - {name: 节点轮询, <<: *Loadbalance, filter: *FilterTunnel, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Roundrobin.png}
 
   # 应用分组
   - {name: 电报信息, type: select, proxies: [节点选择, 省流选择, 落地选择, 香港节点, 日本节点, 狮城节点, 美国节点], icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Telegram.png}
