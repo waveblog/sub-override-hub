@@ -23,7 +23,7 @@
      - 替换旗帜
      - IPv6 入口解析（可选）
      - 多机场流量信息整合
-     - 家宽/落地节点自动设置代理链
+     - 家宽/落地节点自动设置代理链（可选）
    - 使用方法：
      - 在 sub-store 订阅管理页面，点击左上角 ➕ 号
      - 将 [sub-store组合订阅模板](https://raw.githubusercontent.com/Seameee/override-hub/refs/heads/main/sub-store组合订阅模板.json) 导入本地配置
@@ -33,7 +33,7 @@
    - 使用方法：
      - 在 sub-store 文件管理页面，点击左上角 ➕ 号
      - 将 [mihomo配置](https://raw.githubusercontent.com/Seameee/override-hub/refs/heads/main/mihomo配置.json) 导入本地配置
-     - 选择上一步生成的组合订阅并保存
+     - 将 [singbox配置](https://raw.githubusercontent.com/Seameee/override-hub/refs/heads/main/singbox配置.json) 导入本地配置
 
 ## 致谢
 特别感谢以下项目和个人（排名不分先后）：
