@@ -294,6 +294,7 @@ rules:
   - RULE-SET,ai_non_ip,人工智能
   - RULE-SET,global_non_ip,节点选择
   - RULE-SET,domestic_non_ip,DIRECT
+  - RULE-SET,cn,DIRECT
   - RULE-SET,direct_non_ip,DIRECT
   - RULE-SET,lan_non_ip,DIRECT
 
