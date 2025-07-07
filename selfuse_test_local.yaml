@@ -123,22 +123,22 @@ rule-providers:
   fakeip-filter:
     <<: *RuleSet_filter
     url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/fakeip-filter.mrs
-    path: ./rules/fakeip-filter.mrs
+    path: ./rule_set/other_ruleset/fakeip-filter.mrs
 
   cn:
     <<: *RuleSet_filter
     url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/cn.mrs
-    path: ./rules/cn.mrs
+    path: ./rule_set/other_ruleset/cn.mrs
 
   private:
     <<: *RuleSet_filter
     url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/private.mrs
-    path: ./rules/private.mrs
+    path: ./rule_set/other_ruleset/private.mrs
 
   trackerslist:
     <<: *RuleSet_filter
     url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/trackerslist.mrs
-    path: ./rules/trackerslist.mrs
+    path: ./rule_set/other_ruleset/trackerslist.mrs
 
   reject_non_ip_no_drop:
     <<: *RuleSet_classical
