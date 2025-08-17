@@ -300,10 +300,10 @@ rules:
   - RULE-SET,lan_non_ip,DIRECT
 
   ### IP 类规则
-  - RULE-SET,reject_ip,REJECT,no-resolve
+  - RULE-SET,reject_ip,REJECT
   - RULE-SET,telegram_ip,电报信息,no-resolve
-  - RULE-SET,stream_ip,国外媒体,no-resolve
+  - RULE-SET,stream_ip,国外媒体
   - RULE-SET,lan_ip,DIRECT,no-resolve
-  - RULE-SET,domestic_ip,DIRECT,no-resolve
-  - RULE-SET,china_ip,DIRECT,no-resolve
+  - RULE-SET,domestic_ip,DIRECT
+  - RULE-SET,china_ip,DIRECT
   - MATCH,节点选择
