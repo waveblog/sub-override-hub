@@ -271,7 +271,7 @@ rule-providers:
 
   china_ip:
     <<: *RuleSet_ipcidr
-    url: https://ruleset.skk.moe/Clash/ip/china_ip.txt
+    url: https://testingcf.jsdelivr.net/gh/Seameee/override-hub@refs/heads/main/mergecnip/china_ip.txt
     path: ./rule_set/sukkaw_ruleset/china_ip.txt
 
 # 分流规则
