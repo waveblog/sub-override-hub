@@ -14,7 +14,7 @@
   - [selfuse_test_remote.yaml](https://raw.githubusercontent.com/Seameee/override-hub/refs/heads/main/selfuse_test_remote.yaml) 和 [selfuse_test_local.yaml](https://raw.githubusercontent.com/Seameee/override-hub/refs/heads/main/selfuse_test_local.yaml)为测试配置，请自行选用
 
 ### sub-store 懒人配置
-预置了 sub-store 的懒人配置，导入后添加你的订阅就能使用
+预置了 sub-store 的懒人配置，导入后添加你的订阅就能使用，推荐配合查看[图文版教程](https://linux.do/t/topic/660141/86)
 1. 组合订阅模板
    - 功能包括：
      - 节点重命名
@@ -44,3 +44,5 @@
 - [cmliu/ACL4SSR](https://github.com/cmliu/ACL4SSR)
 - [teishahbc/bgp-cn-ip](https://github.com/teishahbc/bgp-cn-ip)
 - [SukkaW/Surge](https://github.com/SukkaW/Surge)
+- [DustinWin/ruleset_geodata](https://github.com/DustinWin/ruleset_geodata)
+- [Repcz/Tool](https://github.com/Repcz/Tool)
