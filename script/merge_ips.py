@@ -10,7 +10,7 @@ urls = [
 ]
 
 # Output directory and file
-output_dir = "../mergecnip"
+output_dir = "mergecnip"
 output_file = os.path.join(output_dir, "china_ip.txt")
 
 # Set to store unique IPs and CIDRs
