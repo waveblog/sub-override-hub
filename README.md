@@ -12,7 +12,7 @@
     ~~- 仅修改 DNS 部分为 redir-host，其他都和 [selfuse_dns.yaml](https://raw.githubusercontent.com/Seameee/override-hub/refs/heads/main/selfuse_dns.yaml) 同步~~
     ~~- 需自行修改为已配置 DNS 分流的 AdGuardHome DNS / MosDNS 地址~~
 
-  - [selfuse_test_remote.yaml](https://raw.githubusercontent.com/Seameee/override-hub/refs/heads/main/selfuse_test_remote.yaml) 和 [selfuse_test_local.yaml](https://raw.githubusercontent.com/Seameee/override-hub/refs/heads/main/selfuse_test_local.yaml)为之前的配置已不再更新,请使用这两个
+  - [selfuse_test_remote.yaml](https://raw.githubusercontent.com/Seameee/override-hub/refs/heads/main/selfuse_test_remote.yaml) 和 [selfuse_test_local.yaml](https://raw.githubusercontent.com/Seameee/override-hub/refs/heads/main/selfuse_test_local.yaml),之前的配置已不再更新,请使用这两个
 
 ### sub-store 懒人配置
 预置了 sub-store 的懒人配置，导入后添加你的订阅就能使用，推荐配合查看[图文版教程](https://linux.do/t/topic/660141/86)
